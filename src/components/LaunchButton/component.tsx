@@ -4,7 +4,7 @@ import {Spinnable} from '../../components';
 import {Spinner} from '../../icons';
 import {Container, Text} from './style';
 
-interface LaunchButtonProps {
+interface Props {
   color: string;
   loading: boolean;
   onPress(): void;
@@ -12,13 +12,7 @@ interface LaunchButtonProps {
   textColor: string;
 }
 
-const LaunchButton: React.FC<LaunchButtonProps> = ({
-  color,
-  loading,
-  onPress,
-  text,
-  textColor,
-}) => (
+export default (({color, loading, onPress, text, textColor}) => (
   <Container color={color} disabled={loading} onPress={onPress}>
     {loading && (
       <Spinnable spin={loading}>
@@ -27,6 +21,4 @@ const LaunchButton: React.FC<LaunchButtonProps> = ({
     )}
     {!loading && <Text color={textColor}>{text}</Text>}
   </Container>
-);
-
-export default LaunchButton;
+)) as React.FC<Props>;

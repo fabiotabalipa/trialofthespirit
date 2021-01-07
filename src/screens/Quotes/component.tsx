@@ -27,7 +27,7 @@ import {
   Text,
 } from './style';
 
-interface QuotesScreenProps {
+interface Props {
   answered: boolean;
   index: number;
   onPressClose(): void;
@@ -42,7 +42,7 @@ interface QuotesScreenProps {
   slideWidth: number;
 }
 
-const QuotesScreen: React.FC<QuotesScreenProps> = ({
+export default (({
   answered,
   index,
   onPressClose,
@@ -128,6 +128,4 @@ const QuotesScreen: React.FC<QuotesScreenProps> = ({
       </AnswerContainer>
     </Body>
   </Background>
-);
-
-export default QuotesScreen;
+)) as React.FC<Props>;

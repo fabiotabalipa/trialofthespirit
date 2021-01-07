@@ -2,15 +2,13 @@ import React from 'react';
 
 import {Container, Title} from './style';
 
-interface HeaderProps {
+interface Props {
   color: string;
   title: string;
 }
 
-const Header: React.FC<HeaderProps> = ({color, title}) => (
+export default (({color, title}) => (
   <Container>
     <Title color={color}>{title}</Title>
   </Container>
-);
-
-export default Header;
+)) as React.FC<Props>;

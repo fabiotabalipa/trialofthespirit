@@ -5,7 +5,7 @@ import {Quote, Quotes} from '../globals/types';
 import {shuffleArray} from '../globals/utils';
 import api from './api';
 
-export default class QuotesService {
+export class QuotesService {
   static async fetchShuffledQuotes(length: number) {
     const quotes: Quotes = [];
 

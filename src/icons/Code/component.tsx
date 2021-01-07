@@ -4,8 +4,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import {IconProps} from '../../globals/types';
 
-const Code: React.FC<IconProps> = ({color, size, style}) => (
+export default (({color, size, style}) => (
   <Icon color={color} name="code-outline" size={size} style={style} />
-);
-
-export default Code;
+)) as React.FC<IconProps>;

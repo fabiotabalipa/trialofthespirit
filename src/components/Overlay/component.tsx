@@ -3,7 +3,7 @@ import {Animated, ImageProps} from 'react-native';
 
 import {Backdrop, Button, ButtonText, Image, ImageFrame, Text} from './style';
 
-interface OverlayProps {
+interface Props {
   buttonText: string;
   height: number;
   imageSource: ImageProps['source'];
@@ -13,7 +13,7 @@ interface OverlayProps {
   width: number;
 }
 
-const Overlay: React.FC<OverlayProps> = ({
+export default (({
   buttonText,
   height,
   imageSource,
@@ -31,6 +31,4 @@ const Overlay: React.FC<OverlayProps> = ({
       <ButtonText>{buttonText}</ButtonText>
     </Button>
   </Backdrop>
-);
-
-export default Overlay;
+)) as React.FC<Props>;

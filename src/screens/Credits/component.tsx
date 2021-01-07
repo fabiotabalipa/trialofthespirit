@@ -57,7 +57,7 @@ const DesignerIcon: React.FC = () => (
   <Brush color={COLOR_MEDIUM_GREY} size={36} />
 );
 
-const Credits: React.FC = () => (
+export default (() => (
   <Background>
     <Header color={COLOR_YELLOW} title="Credits" />
     <FlatList
@@ -80,6 +80,4 @@ const Credits: React.FC = () => (
     />
     <Text>MIT License</Text>
   </Background>
-);
-
-export default Credits;
+)) as React.FC;

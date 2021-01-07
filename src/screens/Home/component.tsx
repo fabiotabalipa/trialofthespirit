@@ -16,7 +16,7 @@ import {
 import {LightSabers} from '../../icons';
 import {Background, Body} from './style';
 
-interface HomeScreenProps {
+interface Props {
   lastResult: number | null;
   loadingQuotes: boolean;
   onPressLaunch(): void;
@@ -35,11 +35,7 @@ const getLightSaberColor = (result: number | null): string => {
   }
 };
 
-const HomeScreen: React.FC<HomeScreenProps> = ({
-  lastResult,
-  loadingQuotes,
-  onPressLaunch,
-}) => (
+export default (({lastResult, loadingQuotes, onPressLaunch}) => (
   <Background>
     <StatusBar barStyle="light-content" />
     <Body>
@@ -54,6 +50,4 @@ const HomeScreen: React.FC<HomeScreenProps> = ({
       />
     </Body>
   </Background>
-);
-
-export default HomeScreen;
+)) as React.FC<Props>;

@@ -3,7 +3,7 @@ import {Animated} from 'react-native';
 
 import Component from './component';
 
-interface CircularProgressProps {
+interface Props {
   baseColor: string;
   progressColor: string;
   toProgress: number;
@@ -11,13 +11,7 @@ interface CircularProgressProps {
   strokeWidth: number;
 }
 
-const CircularProgressContainer: React.FC<CircularProgressProps> = ({
-  baseColor,
-  progressColor,
-  toProgress,
-  size,
-  strokeWidth,
-}) => {
+export default (({baseColor, progressColor, toProgress, size, strokeWidth}) => {
   const radius = useRef((size - strokeWidth) / 2).current;
   const circumference = useRef(radius * 2 * Math.PI).current;
 
@@ -51,6 +45,4 @@ const CircularProgressContainer: React.FC<CircularProgressProps> = ({
       value={toProgress}
     />
   );
-};
-
-export default CircularProgressContainer;
+}) as React.FC<Props>;

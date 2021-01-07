@@ -3,7 +3,7 @@ import {Alert} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 
-import QuotesService from '../../services/quotes';
+import {QuotesService} from '../../services/quotes';
 
 import {QUOTES_SCREEN} from '../../globals/constants';
 import {ERR_FETCH_QUOTES} from '../../globals/text';
@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from '../../store';
 import {Creators as QuotesActions} from '../../store/ducks/quotes';
 import Component from './component';
 
-const HomeScreenContainer: React.FC = () => {
+export default (() => {
   const [loadingQuotes, setLoadingQuotes] = useState(false);
 
   const lastResult = useSelector((state) => state.lastResult);
@@ -39,6 +39,4 @@ const HomeScreenContainer: React.FC = () => {
       onPressLaunch={onPressLaunch}
     />
   );
-};
-
-export default HomeScreenContainer;
+}) as React.FC;

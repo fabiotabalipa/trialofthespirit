@@ -27,7 +27,7 @@ import {Creators as QuotesActions} from '../../store/ducks/quotes';
 
 import Component from './component';
 
-const QuotesScreenContainer: React.FC = () => {
+export default (() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState<number | null>(null);
 
@@ -169,6 +169,4 @@ const QuotesScreenContainer: React.FC = () => {
       slideWidth={windowWidth}
     />
   );
-};
-
-export default QuotesScreenContainer;
+}) as React.FC;

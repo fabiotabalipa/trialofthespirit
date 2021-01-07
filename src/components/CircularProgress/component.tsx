@@ -3,9 +3,11 @@ import {Animated} from 'react-native';
 
 import Svg, {Circle, Text} from 'react-native-svg';
 
-import WithAnimated from '../../hocs/WithAnimated';
+import withAnimated from '../../hocs/WithAnimated';
 
-export interface CircularProgressProps {
+const AnimatedCircle = withAnimated(Circle);
+
+interface Props {
   baseColor: string;
   circumference: number;
   progressColor: string;
@@ -16,9 +18,7 @@ export interface CircularProgressProps {
   value: number;
 }
 
-const AnimatedCircle = WithAnimated(Circle);
-
-const CircularProgress: React.FC<CircularProgressProps> = ({
+export default (({
   baseColor,
   circumference,
   progressColor,
@@ -59,6 +59,4 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
       strokeWidth={strokeWidth + 1}
     />
   </Svg>
-);
-
-export default CircularProgress;
+)) as React.FC<Props>;

@@ -4,19 +4,14 @@ import {Alert, Linking} from 'react-native';
 import {ERR_LINK} from '../../globals/text';
 import Component from './component';
 
-interface CardContainerProps {
+interface Props {
   description: string;
   icon: React.ReactNode;
   title: string;
   url: string;
 }
 
-const CardContainer: React.FC<CardContainerProps> = ({
-  description,
-  icon,
-  title,
-  url,
-}) => {
+export default (({description, icon, title, url}) => {
   const openURL = () => {
     Linking.openURL(url).catch((err) => {
       console.error('Error opening URL: ', err);
@@ -32,6 +27,4 @@ const CardContainer: React.FC<CardContainerProps> = ({
       title={title}
     />
   );
-};
-
-export default CardContainer;
+}) as React.FC<Props>;

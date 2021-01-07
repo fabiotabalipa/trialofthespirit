@@ -3,14 +3,14 @@ import {TouchableOpacity} from 'react-native';
 
 import {Body, Container, Description, Link, Title} from './style';
 
-interface CardProps {
+interface Props {
   description: string;
   icon: React.ReactNode;
   onPressLink(): void;
   title: string;
 }
 
-const Card: React.FC<CardProps> = ({description, icon, onPressLink, title}) => (
+export default (({description, icon, onPressLink, title}) => (
   <Container>
     {icon}
     <Body>
@@ -21,6 +21,4 @@ const Card: React.FC<CardProps> = ({description, icon, onPressLink, title}) => (
       <Link>link</Link>
     </TouchableOpacity>
   </Container>
-);
-
-export default Card;
+)) as React.FC<Props>;

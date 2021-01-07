@@ -3,15 +3,12 @@ import {Animated} from 'react-native';
 
 import Component from './component';
 
-interface SpinnableContainerProps {
+interface Props {
   children: React.ReactNode;
   spin: boolean;
 }
 
-const SpinnableContainer: React.FC<SpinnableContainerProps> = ({
-  children,
-  spin,
-}) => {
+export default (({children, spin}) => {
   const rotation = useRef<Animated.AnimatedInterpolation>();
   const spinValue = useRef(new Animated.Value(0));
 
@@ -40,6 +37,4 @@ const SpinnableContainer: React.FC<SpinnableContainerProps> = ({
   });
 
   return <Component children={children} rotate={rotation.current} />;
-};
-
-export default SpinnableContainer;
+}) as React.FC<Props>;

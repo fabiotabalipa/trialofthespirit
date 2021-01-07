@@ -1,13 +1,11 @@
 import React from 'react';
 import {Animated} from 'react-native';
 
-interface SpinnableProps {
+interface Props {
   children: React.ReactNode;
   rotate: Animated.AnimatedInterpolation;
 }
 
-const Spinnable: React.FC<SpinnableProps> = ({children, rotate}) => (
+export default (({children, rotate}) => (
   <Animated.View style={{transform: [{rotate}]}}>{children}</Animated.View>
-);
-
-export default Spinnable;
+)) as React.FC<Props>;

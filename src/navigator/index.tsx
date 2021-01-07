@@ -13,7 +13,7 @@ import {Credits, Home, Quotes} from '../screens';
 import modal from './modal';
 import tabs, {tabBarOptions, tabCreditsIcon, tabHomeIcon} from './tabs';
 
-const Navigator: React.FC = () => (
+export default (() => (
   <SafeAreaProvider>
     <NavigationContainer>
       <modal.Navigator
@@ -42,6 +42,4 @@ const Navigator: React.FC = () => (
       </modal.Navigator>
     </NavigationContainer>
   </SafeAreaProvider>
-);
-
-export default Navigator;
+)) as React.FC;

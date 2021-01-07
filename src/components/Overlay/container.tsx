@@ -3,7 +3,7 @@ import {Animated, ImageProps, useWindowDimensions} from 'react-native';
 
 import Component from './component';
 
-interface OverlayContainerProps {
+interface Props {
   buttonText: string;
   imageSource: ImageProps['source'];
   onPressButton(): void;
@@ -11,13 +11,7 @@ interface OverlayContainerProps {
   text: string;
 }
 
-const OverlayContainer: React.FC<OverlayContainerProps> = ({
-  buttonText,
-  imageSource,
-  onPressButton,
-  show,
-  text,
-}) => {
+export default (({buttonText, imageSource, onPressButton, show, text}) => {
   const opacity = useRef(new Animated.Value(0)).current;
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
@@ -43,6 +37,4 @@ const OverlayContainer: React.FC<OverlayContainerProps> = ({
       text={text}
     />
   ) : null;
-};
-
-export default OverlayContainer;
+}) as React.FC<Props>;

@@ -2,14 +2,14 @@ import React from 'react';
 
 import {Dot, Container} from './styles';
 
-interface DotsProp {
+interface Props {
   color: string;
   index: number;
   length: number;
   dotSize: number;
 }
 
-const Dots: React.FC<DotsProp> = ({color, index, length, dotSize}) => {
+export default (({color, index, length, dotSize}) => {
   const dots = [];
 
   for (let i = 0; i < length; i++) {
@@ -19,6 +19,4 @@ const Dots: React.FC<DotsProp> = ({color, index, length, dotSize}) => {
   }
 
   return <Container>{dots}</Container>;
-};
-
-export default Dots;
+}) as React.FC<Props>;
