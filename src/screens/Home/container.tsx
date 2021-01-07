@@ -12,7 +12,7 @@ import {Creators as QuotesActions} from '../../store/ducks/quotes';
 import Component from './component';
 
 export default (() => {
-  const [loadingQuotes, setLoadingQuotes] = useState(false);
+  const [loadingQuotes, setLoadingQuotes] = useState<boolean>(false);
 
   const lastResult = useSelector((state) => state.lastResult);
 

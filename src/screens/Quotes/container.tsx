@@ -28,7 +28,7 @@ import {Creators as QuotesActions} from '../../store/ducks/quotes';
 import Component from './component';
 
 export default (() => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [result, setResult] = useState<number | null>(null);
 
   const quotes = useSelector((state) => state.quotes);
