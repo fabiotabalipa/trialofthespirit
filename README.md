@@ -6,7 +6,7 @@ This app was developed to explore some concepts and conventions recommended by t
 * [Hooks](https://reactjs.org/docs/hooks-intro.html)
 * [Animated](https://reactnative.dev/docs/animated)
 * [Redux](https://redux.js.org) with [duck pattern](https://github.com/erikras/ducks-modular-redux)
-* [reduxsauce](https://github.com/jkeam/reduxsauce)
+* [Redux-Saga](https://redux-saga.js.org/)
 * [styled-components](https://styled-components.com)
 * [axios](https://github.com/axios/axios)
 * ...and more!
