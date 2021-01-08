@@ -1,8 +1,9 @@
 import {AxiosResponse} from 'axios';
 
 import {QUOTE_TYPE_JEDI, QUOTE_TYPE_SITH} from '../globals/constants';
-import {Quote, Quotes} from '../globals/types';
+import {ERR_FETCH_QUOTES} from '../globals/text';
 import {shuffleArray} from '../globals/utils';
+import {Quote, Quotes} from '../store/ducks/quotes/types';
 import api from './api';
 
 export class QuotesService {
@@ -40,13 +41,14 @@ export class QuotesService {
         .then((res) => {
           resolve(QuotesService.getQuoteFromResponse(res));
         })
-        .catch((err) => {
-          console.error('Error fetching Jedi quote: ', err);
-          reject();
+        .catch((/*err*/) => {
+          // TODO: log err
+          reject(ERR_FETCH_QUOTES);
         });
     });
   }
 
+  // TODO: same as above
   private static fetchSithQuote() {
     return new Promise<Quote>((resolve, reject) => {
       api
@@ -54,9 +56,9 @@ export class QuotesService {
         .then((res) => {
           resolve(QuotesService.getQuoteFromResponse(res));
         })
-        .catch((err) => {
-          console.error('Error fetching Sith quote: ', err);
-          reject();
+        .catch((/*err*/) => {
+          // TODO: log err
+          reject(ERR_FETCH_QUOTES);
         });
     });
   }
@@ -77,7 +79,6 @@ export class QuotesService {
     }
 
     return {
-      answer: null,
       id: res.data.id,
       text,
       type: res.data.faction === 0 ? QUOTE_TYPE_JEDI : QUOTE_TYPE_SITH,

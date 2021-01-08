@@ -4,9 +4,9 @@ import {Dot, Container} from './styles';
 
 interface Props {
   color: string;
+  dotSize: number;
   index: number;
   length: number;
-  dotSize: number;
 }
 
 export default (({color, index, length, dotSize}) => {

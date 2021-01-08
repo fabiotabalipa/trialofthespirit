@@ -1,15 +1,19 @@
-import {Dispatch} from 'react';
 import {createDispatchHook, createSelectorHook} from 'react-redux';
-import {createStore} from 'redux';
-import {DefaultActionCreators} from 'reduxsauce';
+import {createStore, applyMiddleware} from 'redux';
 
-import reducers from './ducks';
-import {RootState} from '../globals/types';
+import createSagaMiddleware from 'redux-saga';
 
-export const useDispatch = createDispatchHook<
-  Dispatch<DefaultActionCreators>
->();
+import rootReducer from './ducks/rootReducer';
+import rootSaga from './ducks/rootSaga';
+import {RootState} from './ducks/rootState';
 
+export const useDispatch = createDispatchHook();
 export const useSelector = createSelectorHook<RootState>();
 
-export default createStore(reducers);
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(rootSaga);
+
+export default store;

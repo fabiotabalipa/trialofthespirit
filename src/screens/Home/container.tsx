@@ -1,41 +1,34 @@
-import React, {useState} from 'react';
-import {Alert} from 'react-native';
+import React, {useEffect} from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 
-import {QuotesService} from '../../services/quotes';
-
 import {QUOTES_SCREEN} from '../../globals/constants';
-import {ERR_FETCH_QUOTES} from '../../globals/text';
 import {useDispatch, useSelector} from '../../store';
-import {Creators as QuotesActions} from '../../store/ducks/quotes';
+import * as QuotesActions from '../../store/ducks/quotes/actions';
 import Component from './component';
 
 export default (() => {
-  const [loadingQuotes, setLoadingQuotes] = useState<boolean>(false);
-
-  const lastResult = useSelector((state) => state.lastResult);
+  const result = useSelector((state) => state.result.data);
+  const quotes = useSelector((state) => state.quotes);
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const onPressLaunch = () => {
-    setLoadingQuotes(true);
-    QuotesService.fetchShuffledQuotes(10)
-      .then((quotes) => {
-        setLoadingQuotes(false);
-        dispatch(QuotesActions.replaceQuotes(quotes));
-        navigation.navigate(QUOTES_SCREEN);
-      })
-      .catch(() => {
-        Alert.alert('Error', ERR_FETCH_QUOTES);
-      });
+    dispatch(QuotesActions.load());
   };
+
+  useEffect(() => {
+    if (quotes.data.length > 0) {
+      navigation.navigate(QUOTES_SCREEN);
+    }
+  }, [navigation, quotes.data]);
 
   return (
     <Component
-      lastResult={lastResult.result}
-      loadingQuotes={loadingQuotes}
+      error={quotes.error}
+      lastResult={result}
+      loadingQuotes={quotes.loading}
       onPressLaunch={onPressLaunch}
     />
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
 
-import {Header, LaunchButton} from '../../components';
+import {Header, LaunchButton, Toast} from '../../components';
 import {
   COLOR_BLUE,
   COLOR_DARK_GREY,
@@ -13,11 +13,14 @@ import {
   RESULT_JEDI,
   RESULT_SITH,
 } from '../../globals/constants';
+import {Error} from '../../globals/types';
 import {LightSabers} from '../../icons';
+import {Result} from '../../store/ducks/result/types';
 import {Background, Body} from './style';
 
 interface Props {
-  lastResult: number | null;
+  error: Error | null;
+  lastResult: Result | null;
   loadingQuotes: boolean;
   onPressLaunch(): void;
 }
@@ -35,9 +38,10 @@ const getLightSaberColor = (result: number | null): string => {
   }
 };
 
-export default (({lastResult, loadingQuotes, onPressLaunch}) => (
+export default (({error, lastResult, loadingQuotes, onPressLaunch}) => (
   <Background>
     <StatusBar barStyle="light-content" />
+    {error && <Toast level="error" text={error.msg} />}
     <Body>
       <Header color={COLOR_YELLOW} title="Trial of the Spirit" />
       <LightSabers color={getLightSaberColor(lastResult)} size={88} />
@@ -45,7 +49,7 @@ export default (({lastResult, loadingQuotes, onPressLaunch}) => (
         color={COLOR_GREEN}
         loading={loadingQuotes}
         onPress={onPressLaunch}
-        text="start"
+        text={lastResult ? 'retry' : 'start'}
         textColor={COLOR_DARK_GREY}
       />
     </Body>

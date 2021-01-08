@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
 
-import lastResult from './last_result';
 import quotes from './quotes';
+import result from './result';
 
 export default combineReducers({
-  lastResult,
   quotes,
+  result,
 });

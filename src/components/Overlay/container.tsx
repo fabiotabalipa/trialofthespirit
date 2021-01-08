@@ -7,26 +7,26 @@ interface Props {
   buttonText: string;
   imageSource: ImageProps['source'];
   onPressButton(): void;
-  show: boolean;
   text: string;
+  visible: boolean;
 }
 
-export default (({buttonText, imageSource, onPressButton, show, text}) => {
+export default (({buttonText, imageSource, onPressButton, text, visible}) => {
   const opacity = useRef(new Animated.Value(0)).current;
   const windowWidth = useWindowDimensions().width;
   const windowHeight = useWindowDimensions().height;
 
   useEffect(() => {
-    if (show) {
+    if (visible) {
       Animated.timing(opacity, {
         duration: 900,
         toValue: 1,
         useNativeDriver: true,
       }).start();
     }
-  }, [opacity, show]);
+  }, [opacity, visible]);
 
-  return show ? (
+  return visible ? (
     <Component
       buttonText={buttonText}
       height={windowHeight}
